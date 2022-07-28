@@ -4,7 +4,7 @@
     <div class="bg-light p-5 rounded">
         <h1>Books list</h1>
         <div class="d-flex justify-content-end mb-4">
-            <a href="http://" class="btn btn-info">add</a>
+            <a href="books/create" class="btn btn-info">add a new book</a>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -12,7 +12,7 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Author</th>
+                    <th>Id_author</th>
                     <th>Action</th>
                 </tr>
             </thead>

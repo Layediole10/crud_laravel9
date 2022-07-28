@@ -14,8 +14,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
-        return view('authorList', ['authors' => $authors]);
+        $authors = Author::orderBy('first_name', 'asc')->paginate(5);
+        return view('author.authorList', ['authors' => $authors]);
     }
 
     /**
@@ -25,7 +25,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.authorForm');
     }
 
     /**
@@ -36,7 +36,14 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Author::create([
+            'first_name' =>$request->first_name,
+            'last_name' =>$request->last_name,
+        ]);
+        // $alert = 'operation completed successfully!';
+        // return view('author.alertAuthor', ['alert' => $alert]);
+
+        return back()->with('success', 'operation completed successfully!');
     }
 
     /**
@@ -81,6 +88,9 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $fullName = $author->first_name." ".$author->last_name;
+        $author->delete();
+
+        return back()->with('successDelete', 'L\'author '.$fullName.' deleted successfully!');
     }
 }

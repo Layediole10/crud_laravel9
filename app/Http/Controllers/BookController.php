@@ -15,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         $bookList = Book::all();
-        return view('bookList', ['bookList' => $bookList]);
+        return view('book.bookList', ['bookList' => $bookList]);
     }
 
     /**
@@ -25,7 +25,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book.bookForm');
     }
 
     /**
