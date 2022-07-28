@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\LibraryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LibraryController::class, 'index']);
+
+Route::prefix('/')->group(function () {
+    Route::resource('authors', AuthorController::class);
 });
+
+Route::prefix('/')->group(function () {
+    Route::resource('books', BookController::class);
+});
+
+
