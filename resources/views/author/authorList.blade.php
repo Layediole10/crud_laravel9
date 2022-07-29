@@ -34,7 +34,7 @@
                         <td>{{$author->first_name}}</td>
                         <td>{{$author->last_name}}</td>
                         <td>
-                            <a href="http://" class="btn btn-info">edit</a>
+                            <a href="{{route('authors.edit',['author'=>$author->id])}}" class="btn btn-info">edit</a>
 
 
                             <a href="#" class="btn btn-danger" onclick="if(confirm('Voulez-vous vraiment supprimer cet auteur?')){

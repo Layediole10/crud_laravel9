@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class AuthorController extends Controller
 {
@@ -36,6 +37,11 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'first_name' =>'Required',
+            'last_name' =>'Required',
+        ]);
+        
         Author::create([
             'first_name' =>$request->first_name,
             'last_name' =>$request->last_name,
@@ -65,7 +71,7 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('author.editAuthor', ['author' => $author]);
     }
 
     /**
@@ -77,7 +83,19 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $request->validate([
+            'first_name' =>'Required',
+            'last_name' =>'Required',
+        ]);
+        
+        $author->update([
+            'first_name' =>$request->first_name,
+            'last_name' =>$request->last_name,
+        ]);
+        // $alert = 'operation completed successfully!';
+        // return view('author.alertAuthor', ['alert' => $alert]);
+
+        return back()->with('success', 'Author updated successfully!');
     }
 
     /**
