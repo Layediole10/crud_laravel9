@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{$book->id}}</td>
                         <td>{{$book->title}}</td>
-                        <td>{{$book->description}}</td>
+                        <td>{{Str::limit($book->description), 30}}</td>
                         <td>{{$book->id_author}}</td>
                         <td>
                             <a href="http://" class="btn btn-info">edit</a>
