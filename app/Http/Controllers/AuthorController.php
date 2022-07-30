@@ -41,7 +41,7 @@ class AuthorController extends Controller
             'first_name' =>'Required',
             'last_name' =>'Required',
         ]);
-        
+
         Author::create([
             'first_name' =>$request->first_name,
             'last_name' =>$request->last_name,
@@ -110,5 +110,14 @@ class AuthorController extends Controller
         $author->delete();
 
         return back()->with('successDelete', 'L\'author '.$fullName.' deleted successfully!');
+    }
+
+
+    public function search()
+    {
+        $input = request()->input('q');
+        $result = Author::where('first_name', 'like', "%$input%")->orwhere('last_name', 'like', "%$input%")->paginate(5); 
+
+        return view('author.searchAuthor', ['result' => $result]);
     }
 }

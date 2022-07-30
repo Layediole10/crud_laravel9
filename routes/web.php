@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LibraryController::class, 'index']);
+Route::get('/search', [AuthorController::class, 'search'])->name('search');
 
 Route::prefix('/')->group(function () {
     Route::resource('authors', AuthorController::class);
