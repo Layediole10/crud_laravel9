@@ -109,7 +109,7 @@ class AuthorController extends Controller
         $fullName = $author->first_name." ".$author->last_name;
         $author->delete();
 
-        return back()->with('successDelete', 'L\'author '.$fullName.' deleted successfully!');
+        return back()->with('successDelete', 'Author '.$fullName.' deleted successfully!');
     }
 
 

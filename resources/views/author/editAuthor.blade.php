@@ -14,7 +14,7 @@
 
         @if (session()->has('success'))
             <div class="alert alert-success">
-              <h3>{{session()->get('success')}}<h3/>
+              <h3>{{session()->get('success')}}</h3>
             </div>
         @endif
         <form class="w-50" action="{{route('authors.update',['author'=>$author->id])}}"  method="post">
